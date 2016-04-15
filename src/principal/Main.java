@@ -10,12 +10,12 @@ public class Main {
     
     public static void main(String args[]) {
         
-        Subject s1 = new Subject("Subject1");
-        Subject s2 = new Subject("Subject2");
+        DataEventos s1 = new DataEventos("Subject1");
+        DataEventos s2 = new DataEventos("Subject2");
     
-        ObservadorDeEsportes ob1 = new ObservadorDeEsportes();
-        ObservadorDeMusica ob2 = new ObservadorDeMusica();
-        ObservaTodos ob3 = new ObservaTodos();
+        Observador ob1 = new Observador("Observer 1");
+        Observador ob2 = new Observador("Observer 2");
+        Observador ob3 = new Observador("Observer 3");
     
         s1.addObserver(ob1, "esportes");
         s2.addObserver(ob1, "esportes");

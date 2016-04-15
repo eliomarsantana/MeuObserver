@@ -50,23 +50,11 @@ public class Subject extends Observable {
         }
     }
     
-    public void setDataDoJogo(Date dataJogo) {
-        this.dataEvento = dataJogo;        
-        notifyObservers("esportes");
-        
-    }
-    
-    public void setDataDoShow(Date dataShow) {
-        this.dataEvento = dataShow;      
-        notifyObservers("musica");
-    }
-    
     public String getNome(){
         return this.nomeSubject;
     }
 
     private String nomeSubject;
-    private Date dataEvento;
     private HashMap<String, ArrayList<Observer>> hash;
     private ArrayList<Observer> listaDeObservers;
 }
