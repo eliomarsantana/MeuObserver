@@ -11,7 +11,7 @@ public class ObservadorDeMusica  implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("Notificando o observer -> "+ this.getClass().getName() +" para categoria -> "+arg + "//Subject -> "+o.getClass().getName());
-    }
-    
+        Subject sub = (Subject) o;
+        System.out.println("Notificando o observer -> "+ this.getClass().getName() +" para categoria -> "+arg + "// Registrado no "+sub.getNome());
+    }   
 }

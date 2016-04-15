@@ -1,6 +1,7 @@
 package principal;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
@@ -11,9 +12,10 @@ import java.util.Observer;
  */
 public class Subject extends Observable {
     
-    public Subject() {
+    public Subject(String nome) {
         listaDeObservers = new ArrayList<>();
         hash = new HashMap<String, ArrayList<Observer>>();
+        this.nomeSubject = nome;
     }
 
     public synchronized void addObserver(Observer obsrvr) {
@@ -47,7 +49,24 @@ public class Subject extends Observable {
             notifyObservers();      
         }
     }
+    
+    public void setDataDoJogo(Date dataJogo) {
+        this.dataEvento = dataJogo;        
+        notifyObservers("esportes");
+        
+    }
+    
+    public void setDataDoShow(Date dataShow) {
+        this.dataEvento = dataShow;      
+        notifyObservers("musica");
+    }
+    
+    public String getNome(){
+        return this.nomeSubject;
+    }
 
+    private String nomeSubject;
+    private Date dataEvento;
     private HashMap<String, ArrayList<Observer>> hash;
     private ArrayList<Observer> listaDeObservers;
 }

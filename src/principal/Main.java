@@ -9,8 +9,9 @@ import java.util.Date;
 public class Main {
     
     public static void main(String args[]) {
-        Eventos s1 = new Eventos();
-        Eventos s2 = new Eventos();
+        
+        Subject s1 = new Subject("Subject1");
+        Subject s2 = new Subject("Subject2");
     
         ObservadorDeEsportes ob1 = new ObservadorDeEsportes();
         ObservadorDeMusica ob2 = new ObservadorDeMusica();
