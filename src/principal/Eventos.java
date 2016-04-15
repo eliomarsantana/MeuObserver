@@ -6,19 +6,18 @@ import java.util.Date;
  *
  * @author Eliomar Santana
  */
-public class Eventos extends Subject{
-    private Date dataEvento;
-    
+public class Eventos extends Subject {
+
     public void setDataDoJogo(Date dataJogo) {
-        this.dataEvento = dataJogo;
-        System.out.println("Nova data para esportes: "+ dataJogo);
+        this.dataEvento = dataJogo;        
         notifyObservers("esportes");
         
     }
     
     public void setDataDoShow(Date dataShow) {
-        this.dataEvento = dataShow;
-        System.out.println("Nova data para musica: "+ dataShow);
+        this.dataEvento = dataShow;      
         notifyObservers("musica");
     }
+    
+    private Date dataEvento;
 }

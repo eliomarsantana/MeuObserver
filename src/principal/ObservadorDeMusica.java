@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package principal;
 
 import java.util.Observable;
@@ -12,11 +7,11 @@ import java.util.Observer;
  *
  * @author Eliomar Santana
  */
-public class ObservadorDeMusica  implements Observer{
+public class ObservadorDeMusica  implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("Atualizando data de "+ o.getClass().getName() +" para categoria "+arg+ " "+this.getClass().getName());
+        System.out.println("Notificando o observer -> "+ this.getClass().getName() +" para categoria -> "+arg + "//Subject -> "+o.getClass().getName());
     }
     
 }

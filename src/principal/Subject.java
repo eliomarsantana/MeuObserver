@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package principal;
 
 import java.util.ArrayList;
@@ -16,7 +11,7 @@ import java.util.Observer;
  */
 public class Subject extends Observable {
     
-    public Subject(){
+    public Subject() {
         listaDeObservers = new ArrayList<>();
         hash = new HashMap<String, ArrayList<Observer>>();
     }
@@ -37,7 +32,7 @@ public class Subject extends Observable {
 
     @Override
     public void notifyObservers() {
-        for(Observer observer : listaDeObservers){
+        for(Observer observer : listaDeObservers) {
             observer.update(this, null);//passar observable e a categoria
         } 
     }
@@ -46,7 +41,7 @@ public class Subject extends Observable {
     public void notifyObservers(Object categoria) {
         ArrayList<Observer> observers = hash.get(categoria);
         if(observers!=null) {
-            for(Observer o : observers){
+            for(Observer o : observers) {
                 o.update(this, categoria);
             }
             notifyObservers();      
