@@ -12,12 +12,12 @@ import java.util.Observer;
  *
  * @author Eliomar Santana
  */
-public class Observador implements Observer{
+public class ObservadorDeEsportes implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        o.notifyObservers();
-        
+        System.out.println("Atualizando data de "+ o.getClass().getName() +" para categoria "+arg + " "+this.getClass().getName());
+        //System.out.println("Observer "+nome+" da categoria :"+(categoria==null ? "todos" : categoria)+" subject :"+subject.getNome());
     }
     
 }

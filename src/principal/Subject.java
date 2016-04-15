@@ -6,7 +6,7 @@
 package principal;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -15,41 +15,44 @@ import java.util.Observer;
  * @author Eliomar Santana
  */
 public class Subject extends Observable {
+    
+    public Subject(){
+        listaDeObservers = new ArrayList<>();
+        hash = new HashMap<String, ArrayList<Observer>>();
+    }
 
-    @Override
-    public synchronized void addObserver(Observer o) {
-        observers.add((Observador) o);
+    public synchronized void addObserver(Observer obsrvr) {
+        listaDeObservers.add(obsrvr);
     }
     
-    public void addObserver(Observer o, Object arg){
-        observers.add((Observador) o);
-    }
-
-    @Override
-    public synchronized void deleteObserver(Observer o) {
-        observers.remove(o);
+    public void addObserver(Observer o, String categoria) {
+        ArrayList<Observer> lista = (ArrayList<Observer>) hash.get(categoria);
+        if(lista == null){
+            hash.put(categoria, new ArrayList<Observer>());
+            hash.get(categoria).add(o);
+        }else{
+            lista.add(o);
+        }    
     }
 
     @Override
     public void notifyObservers() {
-        for (Observador ob : observers) {
-            System.out.println("Notificando observers!");
-              ob.update(this, ob);
+        for(Observer observer : listaDeObservers){
+            observer.update(this, null);//passar observable e a categoria
+        } 
+    }
+
+    @Override
+    public void notifyObservers(Object categoria) {
+        ArrayList<Observer> observers = hash.get(categoria);
+        if(observers!=null) {
+            for(Observer o : observers){
+                o.update(this, categoria);
             }
-    }
-    
-    public void setObservers(ArrayList<Observador> observers) {
-        this.observers = observers;
+            notifyObservers();      
+        }
     }
 
-    public void setDataDoJogo(Date data){
-        this.dataEvento = data;
-    }
-
-    public void setDataDoSshow(Date data){
-        this.dataEvento = data;
-    }
-    
-    private ArrayList<Observador> observers = new ArrayList();
-    private Date dataEvento;
+    private HashMap<String, ArrayList<Observer>> hash;
+    private ArrayList<Observer> listaDeObservers;
 }

@@ -5,6 +5,8 @@
  */
 package principal;
 
+import java.util.Date;
+
 /**
  *
  * @author Eliomar Santana
@@ -12,18 +14,20 @@ package principal;
 public class Main {
     
     public static void main(String args[]) {
-        Subject s1 = new Subject();
-        Subject s2 = new Subject();
+        Eventos s1 = new Eventos();
+        Eventos s2 = new Eventos();
     
-        Observador ob1 = new Observador();
-        Observador ob2 = new Observador();
-        Observador ob3 = new Observador();
+        ObservadorDeEsportes ob1 = new ObservadorDeEsportes();
+        ObservadorDeMusica ob2 = new ObservadorDeMusica();
+        ObservaTodos ob3 = new ObservaTodos();
     
-        s1.addObserver(ob1, "esporte");
-        s2.addObserver(ob1, "esporte");
+        s1.addObserver(ob1, "esportes");
+        s2.addObserver(ob1, "esportes");
         s2.addObserver(ob2, "musica");
         s2.addObserver(ob3);
         
-        s1.setDataDoJogo(null);
+        s1.setDataDoJogo(new Date());
+        s2.setDataDoJogo(new Date());
+        s2.setDataDoShow(new Date());
     }
 }
